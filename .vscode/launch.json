@@ -1,0 +1,3 @@
+{
+  "skipFiles": ["<node_internals>/**"]
+}
