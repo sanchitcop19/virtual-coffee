@@ -101,12 +101,13 @@ async function handler(local = false) {
         const pairs = createPairs({
             members: filteredUsers,
             history: existingPairs.map((obj) => obj.pair),
-        }) && [
-            [
-                { id: "U02EH68QY7K", name: "abhishek" },
-                { id: "U02DX7PEGNS", name: "sanchit" },
-            ],
-        ];
+        });
+        // }) && [
+        //     [
+        //         { id: "U02EH68QY7K", name: "abhishek" },
+        //         { id: "U02DX7PEGNS", name: "sanchit" },
+        //     ],
+        // ];
         for (const pair of pairs) {
             await storePair({ pair });
             await delay(1500);
