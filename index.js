@@ -80,12 +80,7 @@ async function handler(local = false) {
       members: filteredUsers,
       history: existingPairs.map((obj) => obj.pair),
     });
-    // }) && [
-    //     [
-    //         { id: "U02EH68QY7K", name: "abhishek" },
-    //         { id: "U02DX7PEGNS", name: "sanchit" },
-    //     ],
-    // ];
+
     const res = [];
     for (const pair of pairs) {
       res.push(storePair({ pair }));
