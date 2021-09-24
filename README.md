@@ -10,11 +10,5 @@ From the base of the repo, execute:
 
 This starts a server on port 3100. The server currently listens for a message containing the text "pair", which triggers the pairing of individuals. This message can be sent in any channel the bot is a part of.  
 
-The handler stores pairings in a remote DB so that the same people are not matched again. 
-
-## Coming next
-
-- Deployment to slack app store
-- GCal integration
-- Zoom integration
+The handler stores pairings in a local JSON object so that the same people are not matched again. 
 
