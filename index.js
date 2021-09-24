@@ -114,7 +114,7 @@ async function handler(local = false) {
       });
     }
     const filename = __dirname + "/store.json";
-    fs.writeFileSync(filename, JSON.stringify(res));
+    fs.writeFileSync(filename, JSON.stringify([...res, ...existingPairs]));
   });
   return app;
 }
