@@ -116,8 +116,16 @@ function createPairs({ members, history }) {
             }
 
             const pair = [
-                { id: member1.id, name: member1.profile.real_name },
-                { id: member2.id, name: member2.profile.real_name },
+                {
+                    id: member1.id,
+                    name: member1.profile.real_name,
+                    email: member1.profile.email,
+                },
+                {
+                    id: member2.id,
+                    name: member2.profile.real_name,
+                    email: member2.profile.email,
+                },
             ];
 
             if (!alreadyPaired({ history, pair })) {
