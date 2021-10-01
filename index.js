@@ -12,6 +12,8 @@
 const { App } = require("@slack/bolt");
 const _ = require("lodash");
 const fs = require("fs");
+const util = require("util");
+const nodemailer = require("nodemailer");
 const secrets = require("./__secrets__");
 const store = require("./store.json");
 
@@ -52,6 +54,16 @@ async function handler() {
 
 async function initiateConversation({ pairs, client, say }) {
     const res = [];
+    const mail = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+            user: secrets.GMAIL.USERNAME,
+            pass: secrets.GMAIL.PASSWORD,
+        },
+    });
+
+    const sendMail = util.promisify(mail.sendMail);
+
     for (const pair of pairs) {
         res.push(getPairInstance({ pair }));
 
@@ -84,6 +96,15 @@ async function initiateConversation({ pairs, client, say }) {
                 },
             ],
         });
+
+        const mailOptions = {
+            from: secrets.GMAIL.USERNAME,
+            to: `${pair[0].email}, ${pair[1].email}`,
+            subject: "Virtual Coffee: New Pairing",
+            text: `Hi ${pair[0].email} and ${pair[1].email}! You have been paired for this virtual coffee round, go ahead and schedule a time to chat!`,
+        };
+
+        await sendMail(mailOptions);
     }
     return res;
 }

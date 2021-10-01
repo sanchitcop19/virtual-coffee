@@ -19,6 +19,7 @@
   "dependencies": {
     "@slack/bolt": "^3.6.0",
     "lodash": "^4.17.21",
+    "nodemailer": "^6.6.5",
     "request": "^2.88.2"
   },
   "devDependencies": {
